@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#D3D3D3D3"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:layout_margin="16dp"
+        android:text="@string/security"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:elevation="16dp"
+        android:id="@+id/pink_card"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#f0737b"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <TextView
+        android:id="@+id/text_sos"
+        android:elevation="16dp"
+        app:layout_constraintTop_toTopOf="@id/pink_card"
+        app:layout_constraintStart_toStartOf="@id/pink_card"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sos"
+        android:textSize="24sp" />
+
+    <TextView
+        app:layout_constraintStart_toStartOf="@+id/pink_card"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/sos_img"
+        android:id="@+id/sos_msg"
+        app:layout_constraintTop_toBottomOf="@id/text_sos"
+        android:layout_marginTop="8dp"
+        android:textColor="#fff"
+        android:elevation="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/in_case_of_emergency_keep_telling_family_members_to_contact_me" />
+
+    <ImageView
+        android:id="@+id/sos_img"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/ic_sos"
+        app:layout_constraintEnd_toEndOf="@id/pink_card"
+        android:elevation="16dp"
+        app:layout_constraintTop_toTopOf="@id/pink_card"
+        app:layout_constraintBottom_toBottomOf="@+id/pink_card" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:elevation="16dp"
+        android:id="@+id/green_card"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#63d2c8"
+        app:layout_constraintTop_toBottomOf="@id/pink_card"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <TextView
+        android:id="@+id/text_guard"
+        android:elevation="16dp"
+        app:layout_constraintTop_toTopOf="@id/green_card"
+        app:layout_constraintStart_toStartOf="@id/green_card"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guard"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/guard_img"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/ic_guard"
+        app:layout_constraintEnd_toEndOf="@id/green_card"
+        android:elevation="16dp"
+        app:layout_constraintTop_toTopOf="@id/green_card"
+        app:layout_constraintBottom_toBottomOf="@+id/green_card" />
+
+    <TextView
+        app:layout_constraintStart_toStartOf="@+id/green_card"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guard_img"
+        android:id="@+id/guard_msg"
+        app:layout_constraintTop_toBottomOf="@id/text_guard"
+        android:layout_marginTop="8dp"
+        android:textColor="#fff"
+        android:elevation="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/open_when_you_are_on_a_potentially_dangerous_journey" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        app:menu="@menu/bottom_bar_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:background="#D3D3D3D3"
+        app:itemTextColor="#63d2c8"
+        app:itemIconTint="@drawable/nav_item_color"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
