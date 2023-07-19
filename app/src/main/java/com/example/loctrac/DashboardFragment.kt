@@ -28,3 +28,5 @@ class DashboardFragment : Fragment() {
         fun newInstance() = DashboardFragment()
     }
 }
+
+//annotation clas
