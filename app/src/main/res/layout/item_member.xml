@@ -57,7 +57,7 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Hno.62 , Niti Khand-II, Indirapuram, Ghaziabad, UP, India"
+            android:text="Hno.62 , Niti Khand-II, Indirapuram, Ghaziabad, UP, India , Hno.23, Niti Khand -3 , indirapuram , Hno.44, Niti Khand-III"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_location"

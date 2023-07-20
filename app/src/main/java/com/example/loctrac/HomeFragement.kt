@@ -1,6 +1,7 @@
 package com.example.loctrac
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,17 +25,52 @@ class HomeFragement : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("FetchContact89" ,"onViewCreated")
+
         val listMembers = listOf<MemberModel>(
-            MemberModel("Apoorv"),
-            MemberModel("Ayush"),
-            MemberModel("Anuradha"),
-            MemberModel("Avinash"),
-            MemberModel("Arvind"),
-            MemberModel("Asha"),
-            MemberModel("Akshat"),
-            MemberModel("Akriti"),
-            MemberModel("Pramugdha"),
-            MemberModel("ShriKant")
+            MemberModel(
+                "Apoorv",
+                "Hno.62 niti khand 2",
+                "87%",
+                "223"),
+            MemberModel
+                ("Ayush",
+                 "Hno.62 Niti Khand-II Indirapuram Ghaziabad UP",
+                 "64%",
+                  "210"
+            ),
+            MemberModel("Anuradha",
+                "Hno.62 Niti Khand-II Indirapuram Ghaziabad UP",
+                "94%",
+                "280"),
+            MemberModel("Avinash",
+                "Gazipur Delhi",
+                "77%",
+                "350"),
+            MemberModel("Arvind",
+                "Hno.333 extn1 , Shalimar Garden Delhi-92",
+                "74%",
+                "215"),
+            MemberModel("Asha",
+                "Hno.62 Niti Khand-II Indirapuram Ghaziabad UP",
+                "54%",
+                "200"),
+            MemberModel("Akshat",
+                "Hno.62 Niti Khand-II Indirapuram Ghaziabad UP",
+                "14%",
+                "190"),
+            MemberModel("Akriti",
+                "Hno.62 Niti Khand-II Indirapuram Ghaziabad UP",
+                "79%",
+                "210"),
+            MemberModel("Pramugdha",
+                "Hno.62 Niti Khand-II Indirapuram Ghaziabad UP",
+                "98%",
+                "20"),
+            MemberModel("ShriKant",
+                "Hno.62 Niti Khand-II Indirapuram Ghaziabad UP",
+                "100%",
+                "200"),
 
         )
         val adapter = MemberAdapter(listMembers)
