@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        
+
         val bottomBar = findViewById<BottomNavigationView>(R.id.bottom_bar)
 
         bottomBar.setOnItemSelectedListener { menuItem ->
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                 inflateFragment(HomeFragement.newInstance())
             }
             else if(menuItem.itemId==R.id.nav_dashboard){
-                inflateFragment(DashboardFragment.newInstance())
+                inflateFragment(MapsFragment())
             }
             else if(menuItem.itemId==R.id.nav_profile) {
                 inflateFragment(ProfileFragment.newInstance())
