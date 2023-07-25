@@ -78,6 +78,19 @@ class HomeFragement : Fragment() {
         val recycler = requireView().findViewById<RecyclerView>(R.id.recycler_member)
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
+
+        val listContacts = listOf<ContactModel>(
+            ContactModel("Arshad",1234567890),
+            ContactModel("Stuti", 789456123),
+            ContactModel("Asis",5566989760)
+        )
+
+        val inviteAdapter = InviteAdapter(listContacts)
+
+        val inviteRecycler = requireView().findViewById<RecyclerView>(R.id.recycler_invite)
+        inviteRecycler.layoutManager = LinearLayoutManager(requireContext())
+        inviteRecycler.adapter = inviteAdapter
+
     }
 
 
