@@ -13,9 +13,11 @@ class MainActivity : AppCompatActivity() {
 
     val permissions = arrayOf(
         android.Manifest.permission.ACCESS_FINE_LOCATION,
-        android.Manifest.permission.CAMERA
-
+        android.Manifest.permission.ACCESS_COARSE_LOCATION,
+        android.Manifest.permission.CAMERA,
+        android.Manifest.permission.READ_CONTACTS
     )
+
     val permissionCode = 78
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
