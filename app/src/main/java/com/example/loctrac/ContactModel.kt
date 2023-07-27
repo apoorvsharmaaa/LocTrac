@@ -1,6 +1,12 @@
 package com.example.loctrac
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class ContactModel (
-    val name:String,
-    val number:String
+    val name: String,
+    @PrimaryKey
+    val number: String
 )
+

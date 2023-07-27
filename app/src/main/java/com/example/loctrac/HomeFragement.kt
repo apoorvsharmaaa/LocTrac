@@ -11,12 +11,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragement : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    lateinit var inviteAdapter : InviteAdapter
+
+    private val listContacts: ArrayList<ContactModel> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,11 +86,24 @@ class HomeFragement : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
 
-        fetchContact()
 
 
+        Log.d("FetchContact89" , "fetchContacts: start karne wale hai")
+        Log.d("FetchContact89", " fetchContacts: Start hogya hai ${listContacts.size}")
+        inviteAdapter = InviteAdapter(listContacts)
+        fetchDatabaseContacts()
 
-        val inviteAdapter = InviteAdapter(fetchContact())
+        Log.d("FetchContact89", "End hogya")
+
+        CoroutineScope(Dispatchers.IO).launch{
+            Log.d("FetchContact89" , "fetchContacts: Coroutine Start")
+
+            insertDatabaseContacts(fetchContacts())
+
+
+            Log.d("FetchContact89" , "fetchContact: Coroutine end ${listContacts.size}")
+        }
+
 
         val inviteRecycler = requireView().findViewById<RecyclerView>(R.id.recycler_invite)
         inviteRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
@@ -94,8 +111,28 @@ class HomeFragement : Fragment() {
 
     }
 
+    private fun fetchDatabaseContacts() {
+        val database = LocTracDatabase.getDatabase(requireContext())
+
+         database.contactDao().getAllContacts().observe(viewLifecycleOwner){
+
+             listContacts.clear()
+             listContacts.addAll(it)
+
+             inviteAdapter.notifyDataSetChanged()
+         }
+
+    }
+
+    private suspend fun insertDatabaseContacts(listContacts: ArrayList<ContactModel>) {
+        val database = LocTracDatabase.getDatabase(requireContext())
+
+        database.contactDao().insertAll(listContacts)
+    }
+
     @SuppressLint("Range")
-    private fun fetchContact(): ArrayList<ContactModel> {
+    private fun fetchContacts(): ArrayList<ContactModel> {
+        Log.d("FetchContact89", "fetchContacts: start")
         val cr = requireActivity().contentResolver
         val cursor = cr.query(ContactsContract.Contacts.CONTENT_URI, null,null,null,null)
         val listContacts:ArrayList<ContactModel> = ArrayList()
@@ -132,6 +169,7 @@ class HomeFragement : Fragment() {
                 cursor.close()
             }
         }
+        Log.d("FetchContact89", "fetchContacts: end")
         return listContacts
     }
 
