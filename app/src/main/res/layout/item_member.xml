@@ -17,6 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient"
         android:padding="@dimen/dimen_16">
 
         <ImageView
@@ -58,7 +59,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="Hno.62 , Niti Khand-II, Indirapuram, Ghaziabad, UP, India , Hno.23, Niti Khand -3 , indirapuram , Hno.44, Niti Khand-III"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_location"
             app:layout_constraintTop_toBottomOf="@id/name" />
@@ -68,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="16:40"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/name" />

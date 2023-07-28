@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#D3D3D3D3"
+    android:background="@drawable/bg_gradient2"
     android:layout_height="match_parent"
     tools:context=".GuardFragment">
 
@@ -26,7 +26,7 @@
         android:id="@+id/pink_card"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="#f0737b"
+        app:cardBackgroundColor="#D1242F"
         app:layout_constraintTop_toBottomOf="@id/title"
         android:layout_width="match_parent"
         android:layout_height="180dp" />
@@ -73,7 +73,7 @@
         android:id="@+id/green_card"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="#63d2c8"
+        app:cardBackgroundColor="#22B1A4"
         app:layout_constraintTop_toBottomOf="@id/pink_card"
         android:layout_width="match_parent"
         android:layout_height="180dp" />
@@ -120,6 +120,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16"
+        android:textColorHint="@color/white"
         android:hint="Enter Email of whom you want to invite"
         app:layout_constraintBottom_toBottomOf="@id/send_invite"
         app:layout_constraintEnd_toStartOf="@id/send_invite"
@@ -141,7 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16"
         android:text="Your Invites : "
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
