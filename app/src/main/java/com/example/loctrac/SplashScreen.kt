@@ -9,11 +9,14 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
+        val isUserLoggedIn = SharedPref.getBoolean(PrefConstant.IS_USER_LOGGED_IN)
 
-
+        if (isUserLoggedIn){
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }else {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
-
-
+        }
     }
 }
