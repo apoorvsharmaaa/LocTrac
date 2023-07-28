@@ -2,15 +2,15 @@
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-   <item
-       android:drawable="@drawable/bg_gradient2">
+    <item
+        android:drawable="@drawable/bg_gradient">
 
-   </item>
+    </item>
 
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/splashpic"
+            android:src="@drawable/lo"
 
             />
     </item>

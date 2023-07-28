@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "772269226823",
+    "project_id": "loctrac-77db9",
+    "storage_bucket": "loctrac-77db9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772269226823:android:b294d55207e7b690cfea62",
+        "android_client_info": {
+          "package_name": "com.example.loctrac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772269226823-455pg70rh4i403d7lbpieul34ckis71r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.loctrac",
+            "certificate_hash": "e3a64d39c1ed3e21550704635e0dc957ec15d9b0"
+          }
+        },
+        {
+          "client_id": "772269226823-ctrql86g0ggj2007j66vfktvfqqa81ii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1SHlO_RoZPyufzEqB9dlh3Tsq8qyKcYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772269226823-1e8g4e6s5q15g7hsgbivu80dfesgru22.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

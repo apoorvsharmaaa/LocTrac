@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/logo_background"
     tools:context=".LoginActivity">
 
+    <!-- Welcome Text -->
+    <TextView
+        android:id="@+id/textViewWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to LocTrac"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="24dp"
-        android:src="@drawable/ic_login_svg"
-        app:layout_constraintBottom_toTopOf="@id/btn_continue"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Subtitle Text -->
+    <TextView
+        android:id="@+id/textViewSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Personal Locator"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/textViewWelcome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
 
+    <!-- Google Sign-up Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
         android:layout_width="match_parent"
@@ -23,9 +44,9 @@
         android:insetTop="0dp"
         android:onClick="signIn"
         android:insetBottom="0dp"
+        android:backgroundTint="@color/black"
         android:padding="16dp"
-        android:text="continue_with_google"
+        android:text="continue with google"
         app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

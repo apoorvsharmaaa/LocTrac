@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -108,6 +110,13 @@ class HomeFragement : Fragment() {
         val inviteRecycler = requireView().findViewById<RecyclerView>(R.id.recycler_invite)
         inviteRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         inviteRecycler.adapter = inviteAdapter
+
+        val threeDots = requireView().findViewById<ImageView>(R.id.icon_three_dots)
+        threeDots.setOnClickListener{
+
+            SharedPref.putBoolean(PrefConstant.IS_USER_LOGGED_IN,false)
+            FirebaseAuth.getInstance().signOut()
+        }
 
     }
 
