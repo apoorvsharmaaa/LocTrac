@@ -1,10 +1,10 @@
 package com.example.loctrac
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.loctrac.databinding.ItemInviteBinding
 
 
 class InviteAdapter(private val listContacts: List<ContactModel>) :
@@ -13,7 +13,7 @@ class InviteAdapter(private val listContacts: List<ContactModel>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InviteAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val item = inflater.inflate(R.layout.item_invite,parent,false)
+        val item = ItemInviteBinding.inflate(inflater,parent,false)
         return ViewHolder(item)
     }
 
@@ -28,8 +28,8 @@ class InviteAdapter(private val listContacts: List<ContactModel>) :
         return listContacts.size
     }
 
-    class ViewHolder(private val item: View) : RecyclerView.ViewHolder(item) {
-        val name = item.findViewById<TextView>(R.id.name)
+    class ViewHolder(private val item: ItemInviteBinding) : RecyclerView.ViewHolder(item.root) {
+        val name = item.name
 
     }
 }

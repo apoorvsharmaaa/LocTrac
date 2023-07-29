@@ -4,10 +4,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +52,34 @@ class MainActivity : AppCompatActivity() {
         }
 
         bottomBar.selectedItemId = R.id.nav_home
+
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val name = currentUser?.displayName.toString()
+        val mail = currentUser?.email.toString()
+        val phoneNumber = currentUser?.phoneNumber.toString()
+        val imageUrl = currentUser?.photoUrl.toString()
+
+        val db = Firebase.firestore
+        //Create a new user with a first and last name
+
+        val user = hashMapOf(
+            "first_name" to name,
+            "mail" to mail,
+            "phoneNumber" to phoneNumber,
+            "imageUrl" to imageUrl
+
+
+        )
+
+        db.collection("users").document(mail).set(user).addOnSuccessListener {
+
+        }
+            .addOnFailureListener {
+
+            }
+
+
 
     }
 

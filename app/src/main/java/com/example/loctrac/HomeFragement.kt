@@ -1,6 +1,7 @@
 package com.example.loctrac
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.ContactsContract.*
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.loctrac.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +23,21 @@ import kotlinx.coroutines.withContext
 class HomeFragement : Fragment() {
 
     lateinit var inviteAdapter : InviteAdapter
-
+    lateinit var mContext : Context
     private val listContacts: ArrayList<ContactModel> = ArrayList()
+     fun OnCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
+    }
+//
+//    override fun binding: FragmentHomeBinding
+
+
+    lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,7 +100,7 @@ class HomeFragement : Fragment() {
         val adapter = MemberAdapter(listMembers)
 
         val recycler = requireView().findViewById<RecyclerView>(R.id.recycler_member)
-        recycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.layoutManager = LinearLayoutManager(mContext)
         recycler.adapter = adapter
 
 
@@ -108,20 +123,20 @@ class HomeFragement : Fragment() {
 
 
         val inviteRecycler = requireView().findViewById<RecyclerView>(R.id.recycler_invite)
-        inviteRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        inviteRecycler.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false)
         inviteRecycler.adapter = inviteAdapter
 
-        val threeDots = requireView().findViewById<ImageView>(R.id.icon_three_dots)
-        threeDots.setOnClickListener{
-
-            SharedPref.putBoolean(PrefConstant.IS_USER_LOGGED_IN,false)
-            FirebaseAuth.getInstance().signOut()
-        }
+//        val threeDots = requireView().findViewById<ImageView>(R.id.icon_three_dots)
+//        threeDots.setOnClickListener{
+//
+//            SharedPref.putBoolean(PrefConstant.IS_USER_LOGGED_IN,false)
+//            FirebaseAuth.getInstance().signOut()
+//        }
 
     }
 
     private fun fetchDatabaseContacts() {
-        val database = LocTracDatabase.getDatabase(requireContext())
+        val database = LocTracDatabase.getDatabase(mContext)
 
          database.contactDao().getAllContacts().observe(viewLifecycleOwner){
 
@@ -134,7 +149,7 @@ class HomeFragement : Fragment() {
     }
 
     private suspend fun insertDatabaseContacts(listContacts: ArrayList<ContactModel>) {
-        val database = LocTracDatabase.getDatabase(requireContext())
+        val database = LocTracDatabase.getDatabase(mContext)
 
         database.contactDao().insertAll(listContacts)
     }
@@ -142,7 +157,7 @@ class HomeFragement : Fragment() {
     @SuppressLint("Range")
     private fun fetchContacts(): ArrayList<ContactModel> {
         Log.d("FetchContact89", "fetchContacts: start")
-        val cr = requireActivity().contentResolver
+        val cr = mContext.contentResolver
         val cursor = cr.query(ContactsContract.Contacts.CONTENT_URI, null,null,null,null)
         val listContacts:ArrayList<ContactModel> = ArrayList()
 
@@ -157,9 +172,9 @@ class HomeFragement : Fragment() {
 
                 if (hasPhoneNumber > 0){
                     val pCur = cr.query(
-                        CommonDataKinds.Phone.CONTENT_URI,
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                         null,
-                    CommonDataKinds.Phone.CONTACT_ID+" = ?",
+                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID+" = ?",
                     arrayOf(id),
                         ""
                     )
